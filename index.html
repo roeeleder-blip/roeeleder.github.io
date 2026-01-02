@@ -35,7 +35,7 @@
         /* --- Header --- */
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
         h1 {
@@ -64,7 +64,7 @@
             color: #111;
             margin-top: 0;
             margin-bottom: 15px;
-            line-height: 1.2;
+            line-height: 1; /* Tighter line height to help alignment */
         }
 
         p {
@@ -78,45 +78,40 @@
             display: grid;
             /* 40% Image, 60% Text space */
             grid-template-columns: 0.4fr 0.6fr; 
-            gap: 50px;
-            align-items: start; /* Ensures top alignment */
+            gap: 60px;
+            /* ALIGNMENT FIX: Ensures both boxes start at the very top line */
+            align-items: start; 
             margin-bottom: 70px;
         }
 
         .profile-container {
             width: 100%;
-            text-align: center; /* Centers image in its own column if small */
+            /* 3:4 Aspect Ratio = The Classic Portrait Shape */
+            aspect-ratio: 3/4; 
+            /* Prevents image from getting gigantic on large screens */
+            max-width: 300px; 
+            margin: 0 auto;
         }
 
         .profile-img {
             width: 100%;
-            /* Prevents the image from getting blurry by capping the width */
-            max-width: 280px; 
-            
-            /* CROPPING LOGIC: 
-               If the image is very tall (full body), this cuts off the bottom 
-               to keep it looking like a "torso shot" (Google style). 
-               Adjust '400px' if you need it taller/shorter. */
-            max-height: 350px; 
-            
-            /* Ensures scaling works */
-            height: auto; 
+            height: 100%;
+            /* This ensures the image fills the 3:4 box perfectly */
             object-fit: cover; 
-            object-position: top center; /* Focuses on face, crops legs */
-            
+            /* This ensures we see the HEAD and shoulders, cropping legs if needed */
+            object-position: top center; 
             display: block;
-            margin: 0 auto; /* Centers the image */
         }
 
         .about-column {
             text-align: left;
-            /* Removes extra space so "ABOUT" aligns with the top of the image */
-            margin-top: -5px; 
         }
         
         .about-title {
             text-align: right; 
             margin-bottom: 25px;
+            /* ALIGNMENT FIX: Negative margin pulls the text UP to match the image top */
+            margin-top: -8px; 
         }
 
         .cv-button {
@@ -150,7 +145,6 @@
         /* --- BOTTOM SECTION (Alps) --- */
         .bottom-section {
             display: grid;
-            /* 60% text, 40% image */
             grid-template-columns: 0.6fr 0.4fr; 
             gap: 50px;
             align-items: start;
@@ -169,10 +163,9 @@
             text-indent: -20px;
         }
 
-        /* Alps Image Container - KEEPS THE VERTICAL LOOK YOU LIKED */
+        /* Alps Image Container - Vertical Portrait */
         .alps-container {
             width: 100%;
-            /* Forces Tall/Vertical Orientation */
             aspect-ratio: 2/3; 
             position: relative;
         }
@@ -204,9 +197,10 @@
             }
             .about-title {
                 text-align: center;
+                margin-top: 0; /* Reset negative margin on mobile */
             }
-            .profile-img {
-                max-width: 250px;
+            .profile-container {
+                max-width: 280px;
             }
             /* Reset Alps to normal on phone */
             .alps-container {
@@ -225,7 +219,7 @@
 
     <div class="top-section">
         <div class="profile-container">
-            <img src="profile.jpg.jpg" alt="Roee Leder" class="profile-img">
+            <img src="profile.jpg" alt="Roee Leder" class="profile-img">
         </div>
 
         <div class="about-column">
