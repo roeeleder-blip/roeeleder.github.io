@@ -3,111 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roee Leder - Home</title>
+    <title>Roee Leder</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
+        /* General Setup */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Roboto', sans-serif;
             color: #333;
-            max-width: 800px;
+            max-width: 900px; /* Wider to fit side-by-side layout */
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
             background-color: #fff;
         }
-        header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid #eaeaea;
-            padding-bottom: 20px;
+
+        /* Color Variable - The "Terra Cotta" Red */
+        :root {
+            --accent-red: #c0504d;
         }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 5px;
-            color: #111;
-        }
-        h2 {
-            font-size: 1.5em;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #222;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
+
         a {
-            color: #0366d6;
-            text-decoration: none;
-        }
-        a:hover {
+            color: #333;
             text-decoration: underline;
         }
-        .profile-section {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-            flex-wrap: wrap;
+        a:hover {
+            color: var(--accent-red);
         }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif; /* Condensed font */
+            font-size: 3.5em;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: 2px;
+            color: #222;
+        }
+
+        .header-line {
+            width: 60%; /* Matches the line width in your image */
+            height: 6px;
+            background-color: var(--accent-red);
+            margin: 10px auto 0 auto;
+            border: none;
+        }
+
+        /* Grid Layout for Top Section (Profile + About) */
+        .top-section {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Left column smaller, Right column wider */
+            gap: 50px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
         .profile-img {
-            width: 200px;
+            width: 100%;
+            max-width: 300px;
             height: auto;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+            /* If your image has a white background, this blends in. 
+               If it's transparent, it looks like the cutout. */
         }
-        .bio {
-            flex: 1;
-            min-width: 300px;
+
+        .about-column {
+            text-align: left;
         }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2em;
+            text-transform: uppercase;
+            color: #222;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        /* Centering the "ABOUT" title specifically */
+        .about-title {
+            text-align: center; 
+        }
+
         .cv-button {
-            display: inline-block;
-            background-color: #0366d6;
+            display: block;
+            background-color: var(--accent-red);
             color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-weight: 500;
-        }
-        .cv-button:hover {
-            background-color: #0255b3;
+            text-align: center;
+            padding: 12px 0;
             text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 1.1em;
+            margin-top: 20px;
+            width: 100%; /* Full width of the column */
+            border-radius: 2px;
+        }
+        
+        .cv-button:hover {
+            background-color: #a3403d;
             color: white;
+            text-decoration: none;
         }
-        ul.publications {
-            list-style-type: none;
+
+        /* The Divider Line */
+        .divider {
+            border-top: 2px solid var(--accent-red);
+            margin: 60px 0;
+            opacity: 0.6;
+        }
+
+        /* Bottom Section (Publications + Alps Image) */
+        .bottom-section {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* Text wider, Image narrower */
+            gap: 40px;
+        }
+
+        .publications-list {
+            list-style: none;
             padding: 0;
+            font-size: 0.95em;
         }
-        ul.publications li {
-            margin-bottom: 15px;
+
+        .publications-list li {
+            margin-bottom: 18px;
             padding-left: 20px;
             text-indent: -20px;
         }
-        .bottom-image-container {
-            margin-top: 40px;
+
+        .alps-container {
             text-align: center;
         }
-        .bottom-img {
-            max-width: 100%;
+
+        .alps-img {
+            width: 100%;
             height: auto;
-            border-radius: 4px;
-            margin-bottom: 5px;
+            display: block;
         }
+
         .caption {
-            font-size: 0.9em;
-            color: #666;
             font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            text-align: right;
+            font-size: 0.9em;
         }
-        .footer {
-            margin-top: 50px;
-            font-size: 0.8em;
-            color: #777;
-            text-align: center;
-            border-top: 1px solid #eaeaea;
-            padding-top: 20px;
-        }
-        @media (max-width: 600px) {
-            .profile-section {
-                flex-direction: column;
-                align-items: center;
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .top-section, .bottom-section {
+                grid-template-columns: 1fr; /* Stack vertically on phones */
+                gap: 30px;
+            }
+            .header-line {
+                width: 80%;
             }
             .profile-img {
-                width: 150px;
+                max-width: 250px;
             }
         }
     </style>
@@ -116,14 +177,16 @@
 
     <header>
         <h1>Roee Leder</h1>
-        <p style="font-size: 1.2em; color: #555;">PhD Student in Mathematics, Hebrew University of Jerusalem</p>
+        <div class="header-line"></div>
     </header>
 
-    <div class="profile-section">
-        <img src="profile.jpg" alt="Roee Leder" class="profile-img">
-        
-        <div class="bio">
-            <h2>About</h2>
+    <div class="top-section">
+        <div>
+            <img src="profile.jpg.jpg" alt="Roee Leder" class="profile-img">
+        </div>
+
+        <div class="about-column">
+            <h2 class="section-title about-title">About</h2>
             <p>
                 I am a PhD student in Mathematics at the Hebrew University of Jerusalem. My advisor is <a href="https://razkupferman.wixsite.com/mysite">Raz Kupferman</a>.
             </p>
@@ -134,34 +197,34 @@
                 I wrote a <a href="https://arxiv.org/abs/2504.18494">monograph</a> on generalized Hodge theory. I am currently working on nonlinear applications of this theory in several directions.
             </p>
             
-            <a href="CV.pdf" class="cv-button" target="_blank">Download CV</a>
+            <a href="CV.pdf" class="cv-button" target="_blank">Here is my CV</a>
         </div>
     </div>
 
-    <section>
-        <h2>Publications and Preprints</h2>
-        <ul class="publications">
-            <li>1. <strong>Roee Leder</strong>, <em>The linearized Einstein equations with sources on compact Riemannian manifolds with boundary</em>, <a href="https://arxiv.org/abs/2510.12797">arXiv:2510.12797</a>, 2025.</li>
-            
-            <li>2. <strong>Roee Leder</strong>, <em>Cohomology for linearized boundary-value problems on general Riemannian structures</em>, <a href="https://arxiv.org/abs/2504.18494">arXiv:2504.18494</a>, 2025.</li>
-            
-            <li>3. Raz Kupferman, <strong>Roee Leder</strong>, <em>Elliptic pre-complexes, Hodge-like decompositions and overdetermined boundary-value problems</em>, Forum Math. Sigma 13 (2025), e51.</li>
-            
-            <li>4. Raz Kupferman, <strong>Roee Leder</strong>, <em>Double forms: Regular elliptic bilaplacian operators</em>, J. Anal. Math. 153 (2024), 683–758.</li>
-            
-            <li>5. Raz Kupferman, <strong>Roee Leder</strong>, <em>On Saint-Venant compatibility and stress potentials in manifolds with boundary and constant sectional curvature</em>, SIAM J. Math. Anal. 54 (4) (2022), 4625–4657.</li>
-            
-            <li>6. <strong>Roee Leder</strong>, <em>Cohomology for curvature</em>, in preparation.</li>
-        </ul>
-    </section>
+    <div class="divider"></div>
 
-    <div class="bottom-image-container">
-        <img src="alps.jpg" alt="Zillertal alps" class="bottom-img">
-        <div class="caption">Zillertal alps</div>
-    </div>
+    <div class="bottom-section">
+        <div>
+            <h2 class="section-title">Publications and Preprints</h2>
+            <ul class="publications-list">
+                <li>1. <strong>Roee Leder</strong>, <em>The linearized Einstein equations with sources on compact Riemannian manifolds with boundary</em>, <a href="https://arxiv.org/abs/2510.12797">arXiv:2510.12797</a>, 2025.</li>
+                
+                <li>2. <strong>Roee Leder</strong>, <em>Cohomology for linearized boundary-value problems on general Riemannian structures</em>, <a href="https://arxiv.org/abs/2504.18494">arXiv:2504.18494</a>, 2025.</li>
+                
+                <li>3. Raz Kupferman, <strong>Roee Leder</strong>, <em>Elliptic pre-complexes, Hodge-like decompositions and overdetermined boundary-value problems</em>, Forum Math. Sigma 13 (2025), e51.</li>
+                
+                <li>4. Raz Kupferman, <strong>Roee Leder</strong>, <em>Double forms: Regular elliptic bilaplacian operators</em>, J. Anal. Math. 153 (2024), 683–758.</li>
+                
+                <li>5. Raz Kupferman, <strong>Roee Leder</strong>, <em>On Saint-Venant compatibility and stress potentials in manifolds with boundary and constant sectional curvature</em>, SIAM J. Math. Anal. 54 (4) (2022), 4625–4657.</li>
+                
+                <li>6. <strong>Roee Leder</strong>, <em>Cohomology for curvature</em>, in preparation.</li>
+            </ul>
+        </div>
 
-    <div class="footer">
-        <p>&copy; 2026 Roee Leder | Hosted on GitHub Pages</p>
+        <div class="alps-container">
+            <img src="alps.jpg" alt="Zillertal alps" class="alps-img">
+            <div class="caption">Zillertal alps</div>
+        </div>
     </div>
 
 </body>
