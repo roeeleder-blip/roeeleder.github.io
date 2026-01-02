@@ -35,7 +35,7 @@
         /* --- Header --- */
         header {
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 60px;
         }
 
         h1 {
@@ -76,35 +76,42 @@
         /* --- TOP SECTION (Profile) --- */
         .top-section {
             display: grid;
-            /* Adjusted ratio to match Google Site: Image is about 40% of width */
+            /* 40% Image, 60% Text space */
             grid-template-columns: 0.4fr 0.6fr; 
-            gap: 60px;
-            align-items: start;
+            gap: 50px;
+            align-items: start; /* Ensures top alignment */
             margin-bottom: 70px;
         }
 
-        /* This container forces the "Cut" / Dimensions */
         .profile-container {
             width: 100%;
-            /* 3:4 Aspect Ratio (Portrait) - Matches the vertical feel of your screenshot */
-            aspect-ratio: 3/4; 
-            overflow: hidden;
-            position: relative;
+            text-align: center; /* Centers image in its own column if small */
         }
 
         .profile-img {
             width: 100%;
-            height: 100%;
-            /* ZOOM and CROP: This fills the box, cutting off sides/bottom as needed */
+            /* Prevents the image from getting blurry by capping the width */
+            max-width: 280px; 
+            
+            /* CROPPING LOGIC: 
+               If the image is very tall (full body), this cuts off the bottom 
+               to keep it looking like a "torso shot" (Google style). 
+               Adjust '400px' if you need it taller/shorter. */
+            max-height: 350px; 
+            
+            /* Ensures scaling works */
+            height: auto; 
             object-fit: cover; 
-            /* Focus: Keeps your face (top center) visible while cropping the rest */
-            object-position: top center; 
+            object-position: top center; /* Focuses on face, crops legs */
+            
+            display: block;
+            margin: 0 auto; /* Centers the image */
         }
 
         .about-column {
             text-align: left;
-            /* Pushes text down slightly to align better with the visual top of the image */
-            padding-top: 10px; 
+            /* Removes extra space so "ABOUT" aligns with the top of the image */
+            margin-top: -5px; 
         }
         
         .about-title {
@@ -162,7 +169,7 @@
             text-indent: -20px;
         }
 
-        /* Alps Image Container */
+        /* Alps Image Container - KEEPS THE VERTICAL LOOK YOU LIKED */
         .alps-container {
             width: 100%;
             /* Forces Tall/Vertical Orientation */
@@ -198,10 +205,13 @@
             .about-title {
                 text-align: center;
             }
-            .profile-container, .alps-container {
-                max-width: 350px;
-                margin: 0 auto;
-                aspect-ratio: auto; /* Allow natural height on mobile */
+            .profile-img {
+                max-width: 250px;
+            }
+            /* Reset Alps to normal on phone */
+            .alps-container {
+                aspect-ratio: auto;
+                height: auto;
             }
         }
     </style>
