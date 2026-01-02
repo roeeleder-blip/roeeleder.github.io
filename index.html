@@ -13,10 +13,10 @@
         /* --- General Settings --- */
         body {
             font-family: 'Roboto', sans-serif;
-            color: #333;
+            color: #222;
             max-width: 950px; 
             margin: 0 auto;
-            padding: 40px 30px;
+            padding: 50px 40px;
             background-color: #fff;
         }
 
@@ -25,7 +25,7 @@
         }
 
         a {
-            color: #333;
+            color: #222;
             text-decoration: underline;
         }
         a:hover {
@@ -35,63 +35,68 @@
         /* --- Header --- */
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
         h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: 4em; 
+            font-size: 3.8em; 
             text-transform: uppercase;
             margin: 0;
-            letter-spacing: 1px;
             color: #111;
             line-height: 1;
+            letter-spacing: 1px;
         }
 
         .header-line {
             width: 60%;
-            height: 7px;
+            height: 6px;
             background-color: var(--accent-red);
             margin: 15px auto 0 auto;
             border: none;
         }
 
-        /* --- Section Titles --- */
+        /* --- Typography --- */
         .section-title {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.2em;
+            font-size: 2em;
             text-transform: uppercase;
-            color: #222;
+            color: #111;
             margin-top: 0;
-            margin-bottom: 25px;
-            line-height: 1.1;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-size: 1.05em;
         }
 
         /* --- TOP SECTION (Profile) --- */
         .top-section {
             display: grid;
-            /* 1fr 1.3fr ratio matches the screenshot balance */
-            grid-template-columns: 1fr 1.3fr; 
-            gap: 50px;
+            /* 35% image, 65% text */
+            grid-template-columns: 0.35fr 0.65fr; 
+            gap: 60px;
             align-items: start;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
         .profile-img {
             width: 100%;
-            height: auto; /* Maintains natural aspect ratio - no cropping */
+            height: auto;
             display: block;
-            margin: 0 auto;
+            margin-top: 10px; /* Slight offset to align with text visual weight */
         }
 
         .about-column {
             text-align: left;
-            padding-top: 20px;
         }
         
         .about-title {
-            text-align: right; /* Matches the Google Site right-alignment */
-            margin-bottom: 20px;
+            text-align: right; /* Aligns "ABOUT" to the right */
+            margin-bottom: 25px;
         }
 
         .cv-button {
@@ -103,10 +108,10 @@
             text-decoration: none;
             font-family: 'Roboto', sans-serif;
             font-weight: 500;
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin-top: 25px;
             width: 100%;
-            border-radius: 3px;
+            border-radius: 2px;
         }
         
         .cv-button:hover {
@@ -125,8 +130,8 @@
         /* --- BOTTOM SECTION (Alps) --- */
         .bottom-section {
             display: grid;
-            /* 1.4fr 1fr ratio gives text space but keeps image substantial */
-            grid-template-columns: 1.4fr 1fr; 
+            /* 60% text, 40% image */
+            grid-template-columns: 0.6fr 0.4fr; 
             gap: 50px;
             align-items: start;
         }
@@ -139,18 +144,24 @@
         }
 
         .publications-list li {
-            margin-bottom: 20px;
-            padding-left: 25px;
-            text-indent: -25px;
+            margin-bottom: 22px;
+            padding-left: 20px;
+            text-indent: -20px;
         }
 
+        /* Forces the vertical "Portrait" look for the Alps image */
         .alps-container {
-            text-align: right; /* Aligns image to the right edge */
+            width: 100%;
+            /* This forces the container to be a tall rectangle */
+            aspect-ratio: 2/3; 
+            position: relative;
         }
 
         .alps-img {
             width: 100%;
-            height: auto; /* Maintains natural landscape shape */
+            height: 100%;
+            /* This makes the image fill the tall box by cropping the sides */
+            object-fit: cover; 
             display: block;
             border-radius: 2px;
         }
@@ -160,10 +171,10 @@
             color: #777;
             margin-top: 8px;
             text-align: right;
-            font-size: 0.85em;
+            font-size: 0.9em;
         }
 
-        /* --- Mobile --- */
+        /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
             .top-section, .bottom-section {
                 grid-template-columns: 1fr;
@@ -176,7 +187,13 @@
                 text-align: center;
             }
             .profile-img {
-                max-width: 350px;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            /* On mobile, let the alps image be normal height */
+            .alps-container {
+                aspect-ratio: auto;
+                height: 300px;
             }
         }
     </style>
@@ -229,8 +246,10 @@
             </ul>
         </div>
 
-        <div class="alps-container">
-            <img src="alps.jpg" alt="Zillertal alps" class="alps-img">
+        <div>
+            <div class="alps-container">
+                <img src="alps.jpg" alt="Zillertal alps" class="alps-img">
+            </div>
             <div class="caption">Zillertal alps</div>
         </div>
     </div>
